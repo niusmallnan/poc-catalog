@@ -1,0 +1,45 @@
+.catalog:
+  name: "3-tier-web-glb"
+  version: "v1.0"
+  questions:
+    - variable: "FQDN"
+      label: "APP FQDN"
+      description: "Something like xx.yy.com:port"
+      type: "string"
+      default: "appdemo.dev.cmbc.com:8088"
+      required: true
+    - variable: "LINK_PORT"
+      label: "Link Port For GLB"
+      description: "Link Port for GLB"
+      type: "string"
+      default: "8088"
+      required: true
+    - variable: "DB_HOST"
+      label: "DB Host"
+      description: DB Host for app"
+      type: "string"
+      default: "172.31.15.213"
+      required: true
+
+app-lb:
+  scale: 1
+  start_on_create: true
+  lb_config:
+    certs: []
+    port_rules:
+    - hostname: ${FQDN}
+      priority: 1
+      protocol: http
+      service: qly
+      source_port: ${LINK_PORT}
+      target_port: 8000
+  health_check:
+    healthy_threshold: 2
+    response_timeout: 2000
+    port: 42
+    unhealthy_threshold: 3
+    interval: 2000
+    strategy: recreate
+qly:
+  scale: 1
+  start_on_create: true

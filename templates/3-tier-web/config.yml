@@ -1,0 +1,5 @@
+name: 3-tier-web
+description: |
+      Rancher POC APP
+version: v1.0
+category: POC

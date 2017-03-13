@@ -1,0 +1,8 @@
+version: '2'
+services:
+  qly:
+    image: registry.cn-hangzhou.aliyuncs.com/niusmallnan/qiluyuan
+    environment:
+      DB_HOST: ${DB_HOST}
+    expose:
+    - "8000"

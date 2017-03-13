@@ -1,0 +1,7 @@
+.catalog:
+  name: "3-tier-web-glb"
+  version: "v1.0"
+
+qly:
+  scale: 1
+  start_on_create: true

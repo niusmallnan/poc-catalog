@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app-lb:
+    image: rancher/none
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.glb: 'true'
+      io.rancher.container.create_agent: 'true'
+      io.rancher.glb.http: 'true'
+  qly:
+    image: registry.cn-hangzhou.aliyuncs.com/niusmallnan/qiluyuan
+    environment:
+      DB_HOST: ${DB_HOST}
+    labels:
+      io.rancher.glb: 'true'
