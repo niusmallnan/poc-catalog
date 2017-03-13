@@ -4,5 +4,5 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/niusmallnan/qiluyuan
     environment:
       DB_HOST: ${DB_HOST}
-    expose:
+    ports:
     - "8000"
